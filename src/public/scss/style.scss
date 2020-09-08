@@ -1,0 +1,929 @@
+@import '~antd/dist/antd.css';
+@import "./font-awesome.min.css";
+@import "./all.min.css";
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.body, #root, .App {
+  width: 100%;
+  height: 100%;
+  min-width: 1272px;
+  overflow: hidden;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.inputF {
+  textarea {
+    width: 100%;
+    border: #dadada 1px solid;
+    border-radius: 2px;
+    min-height: 50px;
+    max-height: 150px;
+  }
+}
+.inputF__wrapper.disabled {
+  display: grid;
+  grid-template-columns: 100px calc(100% - 100px - 20px);
+  grid-gap: 20px;
+
+  .inputF {
+    min-height: 20px;
+    // height: 20px;
+    width: 100%;
+  }
+
+  .inputF__title {
+    margin-right: 30px;
+  }
+  textarea {
+    background: white;
+    border: none;
+    resize: none;
+    min-height: 100px;
+    overflow: auto;
+    // height: 20px;
+  }
+}
+
+.noData {
+  font-size: 24px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.emptyField {
+  font-size: 16px;
+  color: #ff1919;
+  white-space: pre-line;
+}
+
+.App {
+  .header {
+    .ant-menu {
+      padding-right: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .body {
+    overflow: hidden;
+    flex-direction: row;
+    display: flex;
+    height: calc(100% - 42px);
+
+    .navigation {
+      height: 100%;
+
+      .ant-menu {
+        padding-top: 20px;
+        min-width: 200px;
+        width: 17vw;
+        height: 100%;
+      }
+    }
+    .content {
+      background: #e8e8e894;
+      height: calc(100% - -22px - 20px);
+      min-width: 1092px;
+      padding-top: 20px;
+      width: calc(100% - 162px);
+      overflow: auto;
+      .content__breadcrumb {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        .ant-breadcrumb {
+          font-size: 20px;
+          a {
+              color: #4a4a4a;
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn-group {
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.inputF__wrapper {
+  margin-bottom: 20px;
+
+  .inputF__label {
+    font-size: 14px;
+  }
+
+  .inputF__required {
+    font-size: 13px;
+    color: #a99500;
+  }
+}
+
+.profile {
+  padding: 30px 20px;
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  position: relative;
+
+  .emptyField {
+    margin-bottom: 20px;
+  }
+
+  .profile__nonAuthenticated {
+    text-align: center;
+  }
+
+  .inputF__wrapper {
+    display: grid;
+    width: 70%;
+    grid-template-columns: 200px calc(100% - 200px);
+
+    input {
+      width: 100%;
+    }
+  }
+
+}
+
+.statistics {
+  padding: 30px 20px;
+  background: white;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  display: table;
+  // display: flex;
+  // flex-direction: column;
+
+  .statistics__header {
+    .statistics__header-rangePicker, .statistics__header-select {
+      display: grid;
+      grid-template-columns: 180px calc(100% - 200px);
+      grid-gap: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .statistics__content {
+    width: 100%;
+    height: calc(100% - 104px);
+
+    button {
+      width: 100%;
+    }
+
+    .statistics__content-empty {
+      width: 100%;
+      height: 100%;
+      font-size: 30px;
+      color: #bdbbbb;
+      text-align: center;
+      margin-top: 50px;
+
+      span {
+        color: #7270b9;
+      }
+    }
+
+    .statistics__total-info {
+      display: grid;
+      grid-template-columns: 150px 20px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: rgb(51, 51, 51);
+    }
+  }
+
+  .statistics__footer {
+    margin-bottom: 20px;
+  }
+}
+
+.addPatient {
+  padding: 30px 20px;
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  position: relative;
+
+  .addPatient__content {
+    .addPatient__datePicker, .addPatient__sex, .inputF__wrapper {
+      display: grid;
+      grid-template-columns: 200px 200px;
+      margin-bottom: 20px;
+    }
+    .inputF {
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .emptyField {
+    margin-bottom: 20px;
+  }
+}
+
+.addDrug {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  position: relative;
+
+  .emptyField {
+    // margin-left: 20px;
+    text-align: center;
+  }
+
+  .addDrug__pagination {
+    margin-bottom: 40px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    .radioButton.inside {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      .radioButton-select {
+        height: 22px;
+        width: 22px;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 11px;
+        background: white;
+      }
+      img {
+        display: none;
+      }
+    }
+  }
+
+  .addDrug__content {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .addDrug__footer {
+    width: 90%;
+    margin: 0 auto;
+    .ant-btn:first-child {
+      margin-right: 5px;
+    }
+  }
+}
+
+.reception {
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  padding: 30px 20px;
+
+  .reception__top-data {
+    width: 400px;
+    margin-bottom: 20px;
+
+    .reception__top-sex, .reception__top-birthday, .reception__top-pid {
+      display: grid;
+      grid-template-columns: 150px 200px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .reception__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .reception__header-leftSide {
+      width: 200px;
+    }
+
+    .reception__header-center {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 30px;
+      .reception__date {
+        margin-left: 20px;
+        margin-right: 10px;
+        font-size: 17px;
+      }
+
+      i {
+        font-size: 25px;
+      }
+
+      .reception__time {
+        margin-left: 10px;
+        margin-right: 20px;
+        font-size: 17px;
+      }
+    }
+  }
+
+  .reception__content {
+    width: 100%;
+    height: calc(100% - 32px - 30px);
+
+    .reception__invalidDate {
+        text-align: center;
+        color: red;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .reception__content-sex {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 100px calc(100% - 100px - 20px);
+      margin-bottom: 20px;
+    }
+
+    .reception__content-brth {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 100px 100px 100px;
+      margin-bottom: 20px;
+
+      .reception__years, .reception__month {
+        label {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .reception__content-drugs {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 100px calc(100% - 100px - 20px);
+
+      .reception__content-drugsTittle {
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+.receptionPublic {
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  padding: 30px 20px;
+
+  .receptionPublic__header {
+    text-align: center;
+
+    .receptionPublic__date {
+      margin-left: 20px;
+      margin-right: 10px;
+      font-size: 17px;
+    }
+
+    i {
+      font-size: 25px;
+    }
+  }
+
+  .receptionPublic__content {
+    .receptionPublic__content-sex {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 100px calc(100% - 100px - 20px);
+      margin-bottom: 20px;
+    }
+
+    .receptionPublic__content-brth {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 100px 100px;
+      margin-bottom: 20px;
+    }
+
+    .receptionPublic__years, .receptionPublic__month {
+      label {
+        margin-left: 10px;
+      }
+    }
+  }
+
+}
+
+.instruction {
+  display: grid;
+  grid-template-columns: 65% 32%;
+  grid-gap: 3%;
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  padding: 30px 20px;
+
+  .tree {
+    .branch {
+      margin-bottom: 20px;
+      // border-bottom: 1px solid #00000045;
+      padding-bottom: 10px;
+
+      span {
+        margin-right: 5px;
+      }
+
+      .tree__branch-description {
+        word-wrap: break-word;
+        padding-left: 15px;
+        margin-left: 20px;
+        text-align: justify;
+      }
+    }
+  }
+
+  .instruction__comments {
+    height: 1350px;
+    position: relative;
+    .instruction__comments-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.65);
+    }
+    .instruction__comments-add {
+      .inputF__wrapper {
+        margin-bottom: 10px;
+      }
+    }
+    .instruction__comments-list {
+      margin-top: 20px;
+      overflow: auto;
+      height: calc(100% - 108px - 20px);
+
+      .title__name {
+        margin-right: 5px;
+        font-size: 16px;
+      }
+      .title__time {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.recommendation-wrap {
+  display: table;
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px 20px;
+  position: relative;
+  height: 100%;
+
+
+  .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #b7b7cc;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #b7b7cc transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .recommendation {
+    display: grid;
+    grid-template-columns: 350px calc(100% - 350px - 100px);
+    grid-gap: 100px;
+
+    .recommendation__leftSide {
+      .recomendation__drug {
+        display: grid;
+        grid-template-columns: 300px calc(100% - 300px - 25px);
+        grid-gap: 25px;
+
+        .recomendation__drug-list {
+          margin-bottom: 15px;
+          border-bottom: 1px solid #e4e4e4;
+          padding-bottom: 15px;
+
+          .recomendation__description {
+            .allDrugs__description-3 {
+              .recomendation__analogies {
+                margin-right: 5px;
+              }
+
+              .allDrugs__description-text {
+                overflow-wrap: break-word;
+              }
+
+              .allDrugs__description-tittle {
+                  margin-right: 5px;
+              }
+            }
+          }
+        }
+      }
+      .recomendation__drug-showAll {
+        // padding-top: 15px;
+      }
+    }
+    .recommendation__rightSide {
+      .recomendation__reception-header {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+
+        .recomendation__reception-header-center {
+          margin: 0 auto;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          height: 30px;
+          .reception__date {
+            margin-left: 20px;
+            margin-right: 10px;
+            font-size: 17px;
+          }
+
+          i {
+            font-size: 25px;
+          }
+        }
+      }
+
+      .recomendation__reception-body {
+        div {
+          margin-top: 10px;
+        }
+
+        label {
+            font-weight: 500;
+          }
+
+      }
+
+      .recomendation__reception-button {
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
+.drugSelection {
+  padding: 30px 20px 30px 20px;
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+
+  .drugSelection__sex {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+
+    .drugSelection__sex-tittle {
+      margin-right: 15px;
+    }
+  }
+  .drugSelection__age {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+
+    label {
+      margin-right: 20px;
+    }
+    .drugSelection__years, .drugSelection__month {
+      label {
+        margin-left: 5px;
+      }
+    }
+  }
+
+}
+
+.allDrugs {
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: row;
+
+  .allDrugs__leftSide {
+    width: 500px;
+    .ant-list {
+      margin-top: 20px;
+      width: 90%;
+
+    }
+    .ant-pagination {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 50px;
+
+    }
+
+    .allDrugs__ist-item {
+      color: black;
+    }
+
+    .allDrugs__description-1, .allDrugs__description-2 {
+      label {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.allPatients {
+  display: flex;
+  flex-direction: row;
+  padding: 30px 20px;
+  background: white;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+
+  .allPatients__leftSide {
+      width: 500px;
+    .ant-list {
+      margin-top: 20px;
+      width: 90%;
+
+    }
+    .ant-pagination {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 50px;
+
+    }
+  }
+}
+
+#portal {
+  background: #0000003d;
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  .signIn {
+    position: absolute;
+    top: 20%;
+    height: 100%;
+    width: 100%;
+
+    .signIn-wrapper {
+      position: relative;
+      padding-top: 80px;
+      width: 450px;
+      height: 320px;
+      margin: 0 auto;
+      // background: #134cb5;
+      background: rgb(40,70,224);
+      background: radial-gradient(circle, rgba(40,70,224,1) 38%, rgba(61,111,226,1) 99%);
+
+      .signIn-wrongData {
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+
+      .signIn-tittle {
+        position: absolute;
+        top: 25px;
+        left: calc(50% - 33.6px);
+        color: white;
+        font-size: 25px;
+      }
+
+      .signIn-close {
+        position: absolute;
+        top: 6px;
+        right: 12px;
+        cursor: pointer;
+        path {
+          fill: #ffffffd6;
+        }
+      }
+
+      .signIn-signUp {
+        width: 80px;
+        margin: 0 auto;
+        color: #ffffffd6;
+        margin-top: 25px;
+        cursor: pointer;
+      }
+
+      .ant-btn {
+        width: 300px;
+        top: 15px;
+        left: calc(50% - 150px);
+        color: white;
+        font-size: 14px;
+        padding: 0;
+        // background: #0fc5c5;
+        border: none;
+      }
+
+      .inputF {
+        width: 300px;
+        margin: 0 auto;
+        input {
+          height: 35px;
+          width: 100%;
+          padding-left: 40px;
+          background-size: 19px;
+          background-origin: content-box;
+          color: black;
+          // background-size: contain !important;
+          background-repeat: no-repeat !important;
+          background-position: -30px 5px;
+          border: none;
+        }
+      }
+      .inputF__wrapper:nth-child(3) {
+        input {
+          background-image: url('../svg/user-circle-solid.svg');
+        }
+      }
+
+      .inputF__wrapper:nth-child(4){
+        input {
+          background-image: url('../svg/key-solid.svg');
+        }
+      }
+    }
+  }
+
+  .signUp {
+    position: absolute;
+    top: 20%;
+    height: 100%;
+    width: 100%;
+
+    .signUp-wrapper {
+      position: relative;
+      padding-top: 80px;
+      width: 450px;
+      height: 320px;
+      margin: 0 auto;
+      background: rgb(40,70,224);
+      background: radial-gradient(circle, rgba(40,70,224,1) 38%, rgba(61,111,226,1) 99%);
+
+      .signUp-userExist, .signUp-emptyField {
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 2px;
+      }
+
+
+      .signUp-tittle {
+        position: absolute;
+        top: 25px;
+        left: calc(50% - 88px);
+        color: white;
+        font-size: 25px;
+      }
+
+      .signUp-close {
+        position: absolute;
+        top: 6px;
+        right: 12px;
+        cursor: pointer;
+        path {
+          fill: #ffffffd6;
+        }
+      }
+
+      .signUp-signIn {
+        width: 30px;
+        margin: 0 auto;
+        color: #ffffffd6;
+        margin-top: 25px;
+        cursor: pointer;
+      }
+
+      .ant-btn {
+        width: 300px;
+        top: 15px;
+        left: calc(50% - 150px);
+        color: white;
+        font-size: 14px;
+        padding: 0;
+        // background: #0fc5c5;
+        border: none;
+      }
+
+      .inputF {
+        width: 300px;
+        margin: 0 auto;
+        input {
+          height: 35px;
+          width: 100%;
+          padding-left: 40px;
+          background-size: 19px;
+          background-origin: content-box;
+          color: black;
+          // background-size: contain !important;
+          background-repeat: no-repeat !important;
+          background-position: -30px 5px;
+          border: none;
+        }
+      }
+      .inputF__wrapper:nth-child(3) {
+        input {
+          background-image: url('../svg/user-circle-solid.svg');
+        }
+      }
+
+      .inputF__wrapper:nth-child(4){
+        input {
+          background-image: url('../svg/key-solid.svg');
+        }
+      }
+    }
+  }
+}
