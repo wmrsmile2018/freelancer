@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import nft from './movies/reducer';
+import movie from './movie/reducer';
 import user from './user/reducer';
 
-const appReducer = combineReducers({ nft, user });
+const appReducer = combineReducers({ movie, user });
 
 export function rootReducer(state, action) {
   if (action.type === 'CLEAR_STORE') {

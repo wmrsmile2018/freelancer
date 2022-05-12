@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { HeaderView } from './view/headerView';
+import { FooterView } from './view/footerView';
 
-export const Header = memo(() => {
-  return <HeaderView />;
+export const Footer = memo(() => {
+  return <FooterView />;
 });

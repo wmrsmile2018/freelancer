@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { setItem } from '../../utils';
 import {
   sagaEventCallBegan,
   sagaEventCallFail,
@@ -8,12 +9,19 @@ import {
 const initialState = {
   error: {},
   status: '',
+  userId: '',
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    auth: (state, action) => {
+      console.log(action);
+      setItem('userId', action.payload.userId);
+      state.userId = action.payload.userId;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(sagaEventCallBegan, (state) => {});
     builder.addCase(sagaEventCallSuccess, (state) => {});
@@ -23,4 +31,4 @@ const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const {} = userSlice.actions;
+export const { auth } = userSlice.actions;
