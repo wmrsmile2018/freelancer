@@ -8,7 +8,7 @@ import './styles.scss';
 export const Input = memo(({ name, isColumn, gap, ...rest }) => {
   const classes = clsx('input');
   return (
-    <MarginGroup classes={classes} isColumn={isColumn} gap={gap}>
+    <MarginGroup className={classes} isColumn={isColumn} gap={gap}>
       <p>{name}</p>
       <InputAntd {...rest} />
     </MarginGroup>

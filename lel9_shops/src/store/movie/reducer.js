@@ -9,7 +9,7 @@ const initialState = {
   error: {},
   status: '',
   movies: [],
-  newMoviews: [],
+  newMovies: [],
   movie: {
     genres: [],
     movieId: -1,
@@ -30,7 +30,7 @@ const movieSlice = createSlice({
       state.movies = action.payload;
     },
     getNewMovies: (state, action) => {
-      state.newMoviews = action.payload;
+      state.newMovies = action.payload;
     },
   },
   extraReducers: (builder) => {

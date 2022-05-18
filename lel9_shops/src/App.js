@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='movie' element={<Movie />} />
         <Route path='movies' element={<Movies />} />
-        <Route path='sign-in' element={<Authentication />} />
+        <Route path='/' element={<Authentication />} />
       </Routes>
       <Footer />
     </div>

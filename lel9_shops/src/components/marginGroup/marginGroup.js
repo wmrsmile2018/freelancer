@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import './styles.scss';
 
 export const MarginGroup = memo(
-  ({ gap, className, children, isColumn, style }) => {
+  ({ gap, className, children, isColumn, style, ...rest }) => {
     const classes = clsx('margin-group', className);
     const styleComponent = {
       gap,
@@ -13,7 +13,7 @@ export const MarginGroup = memo(
     };
 
     return (
-      <div style={styleComponent} className={classes}>
+      <div style={styleComponent} className={classes} {...rest}>
         {children}
       </div>
     );

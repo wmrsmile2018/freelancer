@@ -4,5 +4,5 @@ import './styles.scss';
 
 export const MovieView = memo(() => {
   const classnames = clsx('movie');
-  return <div className={classnames}></div>;
+  return <div className={classnames}>asdasd</div>;
 });
