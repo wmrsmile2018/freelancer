@@ -5,6 +5,8 @@ import { getMoviesApi } from './getMoviesApi';
 import { getNewMoviesApi } from './getNewMoviesApi';
 import { getRatingsApi } from './getRatingsApi';
 import { getTagsApi } from './getTagsApi';
+import { setTagApi } from './setTagApi';
+import { setRatingApi } from './setRatingApi';
 
 const getMovieApi = () => {
   return () => {
@@ -16,6 +18,8 @@ const getMovieApi = () => {
         getNewMovies: getNewMoviesApi(dispatch),
         getRatings: getRatingsApi(dispatch),
         getTags: getTagsApi(dispatch),
+        setTag: setTagApi(dispatch),
+        setRating: setRatingApi(dispatch),
       };
     }, [dispatch]);
   };

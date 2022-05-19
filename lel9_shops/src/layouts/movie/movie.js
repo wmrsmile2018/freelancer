@@ -5,37 +5,57 @@ import { useMovie } from '../../store/movie/api';
 import { MovieView } from './view/movieView';
 
 export const Movie = memo(() => {
-  const { getRatings, getTags, getMovieById } = useMovie();
+  const {
+    getRatings,
+    getTags,
+    getMovieById,
+    setRating: setRatingApi,
+    setTag: setTagApi,
+  } = useMovie();
   const [rating, setRating] = useState(0);
   const [tag, setTag] = useState(0);
   const movie = useSelector((state) => state.movie.movie);
   const tags = useSelector((state) => state.movie.tags);
   const movieRating = useSelector((state) => state.movie.ratings[0]);
+  const addTagReq = useSelector((state) => state.movie.tag.status);
+  const addRatingReq = useSelector((state) => state.movie.rating.status);
+
   const [params] = useSearchParams();
+  const userId = params.get('userId');
+  const movieId = params.get('movieId');
 
   useEffect(() => {
-    const userId = params.get('userId');
-    const movieId = params.get('movieId');
     getMovieById(movieId);
     getRatings(userId, movieId);
     getTags(userId, movieId);
-  }, [params]);
+  }, [userId, movieId]);
 
   useEffect(() => {
-    // console.log(rating, tags);
-  }, [tags, rating]);
+    addTagReq && getTags(userId, movieId);
+    addRatingReq && getRatings(userId, movieId);
+  }, [addTagReq, addRatingReq]);
 
   const handleOnChangeRating = useCallback((value) => {
     setRating(value);
   }, []);
 
   const handleOnAddRating = useCallback(() => {
-    console.log(rating);
-  }, [rating]);
+    setRatingApi({
+      rating,
+      userId,
+      movieId,
+      timestamp: new Date().getTime() / 1000,
+    });
+  }, [userId, movieId, rating]);
 
   const handleOnAddTag = useCallback(() => {
-    console.log(tag);
-  }, [tag]);
+    setTagApi({
+      tag,
+      userId,
+      movieId,
+      timestamp: new Date().getTime() / 1000,
+    });
+  }, [userId, movieId, tag]);
 
   const handleOnChangeTag = useCallback(({ target }) => {
     setTag(target.value);

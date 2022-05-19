@@ -14,17 +14,9 @@ const initialState = {
   ratings: [],
   tag: {
     status: false,
-    movieId: 0,
-    tag: '',
-    timestamp: 0,
-    userId: 0,
   },
   rating: {
     status: false,
-    movieId: 0,
-    rating: 0,
-    timestamp: 0,
-    userId: 0,
   },
   movie: {
     genres: [],
@@ -54,11 +46,18 @@ const movieSlice = createSlice({
     getTags: (state, action) => {
       state.tags = action.payload;
     },
-    setRating: () => {},
-    setTag: () => {},
+    setRating: (state) => {
+      state.rating.status = true;
+    },
+    setTag: (state) => {
+      state.tag.status = true;
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(sagaEventCallBegan, (state) => {});
+    builder.addCase(sagaEventCallBegan, (state) => {
+      state.tag.status = false;
+      state.rating.status = false;
+    });
     builder.addCase(sagaEventCallSuccess, (state) => {});
     builder.addCase(sagaEventCallFail, (state) => {});
   },
