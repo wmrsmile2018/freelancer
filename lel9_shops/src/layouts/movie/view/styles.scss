@@ -1,0 +1,42 @@
+.movie {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  & > div {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .infoblock-title,
+  .movie-title {
+    min-width: 150px;
+  }
+
+  .movie-genre,
+  .movie-tag {
+    border-radius: 5px;
+    padding: 2px 5px;
+    background: rgb(198, 198, 255);
+  }
+
+  .movie-tags,
+  .movie-genres {
+    & > div {
+      flex-wrap: wrap;
+    }
+  }
+  .movie-inputs {
+    .input {
+      & > p {
+        min-width: 150px;
+      }
+    }
+    & > div {
+      width: 800px;
+      button {
+        width: 300px;
+        height: 100%;
+      }
+    }
+  }
+}

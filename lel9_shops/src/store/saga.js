@@ -46,7 +46,6 @@ function* requestExecutor(action) {
   });
 
   try {
-    console.log(options);
     const res = yield call(fetchApi, options);
     yield put({
       type: onSuccess,
