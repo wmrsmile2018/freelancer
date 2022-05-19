@@ -1,6 +1,7 @@
 import { Pagination, Switch } from 'antd';
 import clsx from 'clsx';
 import { memo } from 'react';
+import { Outlet } from 'react-router-dom';
 import { MarginGroup } from '../../../components/marginGroup/marginGroup';
 import { Title } from '../../../components/title';
 import './styles.scss';

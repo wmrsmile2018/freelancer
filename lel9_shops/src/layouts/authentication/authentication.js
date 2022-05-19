@@ -7,7 +7,7 @@ import { AuthenticationView } from './view/authenticationView';
 
 export const Authentication = memo(() => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigation = useNavigate();
   const [userId, setUserId] = useState('');
 
   const handleOnChange = useCallback(({ target }) => {
@@ -17,14 +17,14 @@ export const Authentication = memo(() => {
   const handleOnSubmit = useCallback(() => {
     setUserId('');
     dispatch(auth({ userId }));
-    navigate('/movies');
+    navigation('/im');
   }, [userId]);
 
   useEffect(() => {
     const { userId } = getStorage();
     if (userId) {
       dispatch(auth({ userId }));
-      navigate('/movies');
+      navigation('/im');
     }
   }, []);
 

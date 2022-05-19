@@ -32,7 +32,10 @@ const movieSlice = createSlice({
   initialState,
   reducers: {
     getMovieById: (state, action) => {
-      state.movie = action.payload;
+      state.movie = {
+        ...state.movie,
+        ...action.payload,
+      };
     },
     getMovies: (state, action) => {
       state.movies = action.payload;

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setItem } from '../../utils';
+import { setItem, clearStorage } from '../../utils';
 import {
   sagaEventCallBegan,
   sagaEventCallFail,
@@ -17,9 +17,12 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     auth: (state, action) => {
-      console.log(action);
       setItem('userId', action.payload.userId);
       state.userId = action.payload.userId;
+    },
+    exit: (state) => {
+      clearStorage();
+      state.userId = '';
     },
   },
   extraReducers: (builder) => {
@@ -31,4 +34,4 @@ const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const { auth } = userSlice.actions;
+export const { auth, exit } = userSlice.actions;

@@ -7,14 +7,14 @@ import {
   useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useMovie } from '../../store/movie/api';
 import { MoviesView } from './view/moviesView';
 
 export const DEFAULT_PAGE_SIZE = 20;
 
 export const Movies = memo(() => {
-  const navigate = useNavigate();
+  const navigation = useNavigate();
   const { getMovies, getNewMovies } = useMovie();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
@@ -34,10 +34,10 @@ export const Movies = memo(() => {
   const handleOnClickMovie = useCallback(
     (movieId) => {
       return () => {
-        navigate(`/movie?userId=${userId}&movieId=${movieId}`);
+        navigation(`/im/movie?userId=${userId}&movieId=${movieId}`);
       };
     },
-    [userId, navigate]
+    [userId, navigation]
   );
 
   const handleOnClickPagination = useCallback((page, pageSize) => {
@@ -51,13 +51,16 @@ export const Movies = memo(() => {
   }, [page, movies, newMovies, isAll, pageSize]);
 
   return (
-    <MoviesView
-      movies={pagMovies}
-      title={title}
-      onSwitch={dispatch}
-      onChange={handleOnClickPagination}
-      maxLength={length}
-      onClickMovie={handleOnClickMovie}
-    />
+    <>
+      <MoviesView
+        movies={pagMovies}
+        title={title}
+        onSwitch={dispatch}
+        onChange={handleOnClickPagination}
+        maxLength={length}
+        onClickMovie={handleOnClickMovie}
+      />
+      <Outlet />
+    </>
   );
 });
