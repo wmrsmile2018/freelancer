@@ -25,15 +25,19 @@ export const Movie = memo(() => {
   const movieId = params.get('movieId');
 
   useEffect(() => {
+    console.log('hello');
+  }, []);
+
+  useEffect(() => {
     getMovieById(movieId);
     getRatings(userId, movieId);
     getTags(userId, movieId);
-  }, [userId, movieId]);
+  }, [userId, movieId, getMovieById, getRatings, getTags]);
 
   useEffect(() => {
     addTagReq && getTags(userId, movieId);
     addRatingReq && getRatings(userId, movieId);
-  }, [addTagReq, addRatingReq]);
+  }, [addTagReq, addRatingReq, getTags, userId, movieId, getRatings]);
 
   const handleOnChangeRating = useCallback((value) => {
     setRating(value);
@@ -46,7 +50,7 @@ export const Movie = memo(() => {
       movieId,
       timestamp: new Date().getTime() / 1000,
     });
-  }, [userId, movieId, rating]);
+  }, [setRatingApi, rating, userId, movieId]);
 
   const handleOnAddTag = useCallback(() => {
     setTagApi({
@@ -55,7 +59,7 @@ export const Movie = memo(() => {
       movieId,
       timestamp: new Date().getTime() / 1000,
     });
-  }, [userId, movieId, tag]);
+  }, [setTagApi, tag, userId, movieId]);
 
   const handleOnChangeTag = useCallback(({ target }) => {
     setTag(target.value);

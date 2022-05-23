@@ -1,32 +1,27 @@
-import { memo, useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { memo, useCallback, useLayoutEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../store/user/reducer';
-import { getStorage } from '../../utils';
 import { AuthenticationView } from './view/authenticationView';
 
 export const Authentication = memo(() => {
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const [userId, setUserId] = useState('');
+  const userIdFromStore = useSelector((state) => state.user.userId);
+
+  useLayoutEffect(() => {
+    userIdFromStore && navigation('/im');
+  }, [navigation, userIdFromStore]);
 
   const handleOnChange = useCallback(({ target }) => {
     setUserId(target.value);
   }, []);
 
   const handleOnSubmit = useCallback(() => {
-    setUserId('');
     dispatch(auth({ userId }));
     navigation('/im');
-  }, [userId]);
-
-  useEffect(() => {
-    const { userId } = getStorage();
-    if (userId) {
-      dispatch(auth({ userId }));
-      navigation('/im');
-    }
-  }, []);
+  }, [dispatch, navigation, userId]);
 
   return (
     <AuthenticationView

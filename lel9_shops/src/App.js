@@ -5,26 +5,48 @@ import { Movies } from './layouts/movies';
 import { Authentication } from './layouts/authentication';
 import { Header } from './layouts/header';
 import { Footer } from './layouts/footer';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { memo, useEffect, useLayoutEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStorage } from './utils';
+import { auth } from './store/user/reducer';
+
+const Content = memo(() => {
+  return (
+    <div>
+      <Header />
+      <Routes>
+        <Route path='/'>
+          <Route index element={<Movies />} />
+          <Route path='im/movie' element={<Movie />} />
+        </Route>
+      </Routes>
+      <Footer />
+    </div>
+  );
+});
 
 function App() {
   const navigation = useNavigate();
+  const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.userId);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     !userId && navigation('/');
-  }, [userId]);
+  }, [navigation, userId]);
+
+  useEffect(() => {
+    const { userId } = getStorage();
+    if (userId) {
+      dispatch(auth({ userId }));
+    }
+  }, [dispatch, navigation]);
 
   return (
     <div className='App'>
-      <Header />
       <Routes>
         <Route path='/' element={<Authentication />} />
-        <Route path='im' element={<Movies />} />
-        <Route path='im/movie' element={<Movie />} />
+        <Route path='im' element={<Content />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
