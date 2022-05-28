@@ -10,7 +10,7 @@ export const Header = memo(() => {
   const navigation = useNavigate();
 
   const handleOnBack = useCallback(() => {
-    // navigation('/movies');
+    navigation('/im');
   }, []);
 
   const handleOnExit = useCallback(() => {
