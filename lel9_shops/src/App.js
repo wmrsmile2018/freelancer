@@ -16,8 +16,8 @@ const Content = memo(() => {
       <Header />
       <Routes>
         <Route path='/'>
+          <Route path='movie' element={<Movie />} />
           <Route index element={<Movies />} />
-          <Route path='im/movie' element={<Movie />} />
         </Route>
       </Routes>
       <Footer />
@@ -45,7 +45,7 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<Authentication />} />
-        <Route path='im' element={<Content />} />
+        <Route path='/im/*' element={<Content />} />
       </Routes>
     </div>
   );

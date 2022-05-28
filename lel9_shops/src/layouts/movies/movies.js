@@ -60,6 +60,7 @@ export const Movies = memo(() => {
         maxLength={length}
         onClickMovie={handleOnClickMovie}
       />
+      <Outlet />
     </>
   );
 });

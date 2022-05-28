@@ -23,45 +23,47 @@ export const MoviesView = memo(
   ({ movies, onSwitch, onChange, maxLength, onClickMovie }) => {
     const classes = clsx('movies');
     return (
-      <MarginGroup isColumn className={classes}>
-        <MarginGroup className={`${classes}-title`} gap={10}>
-          <Title title={`Список фильмов`} />
-          <Switch
-            checkedChildren='все'
-            unCheckedChildren='новые'
-            defaultChecked
-            onClick={onSwitch}
-          />
-        </MarginGroup>
+      <>
+        <MarginGroup isColumn className={classes}>
+          <MarginGroup className={`${classes}-title`} gap={10}>
+            <Title title={`Список фильмов`} />
+            <Switch
+              checkedChildren='все'
+              unCheckedChildren='новые'
+              defaultChecked
+              onClick={onSwitch}
+            />
+          </MarginGroup>
 
-        <MarginGroup className={`${classes}-content`}>
-          <MarginGroup isColumn className={`${classes}-table`}>
-            <MovieMiniCard
-              className={'movie-table-header'}
-              name={'Наименование'}
-              year={'Год'}
-              index={'№'}
-            />
-            {movies.map((el, i) => (
+          <MarginGroup className={`${classes}-content`}>
+            <MarginGroup isColumn className={`${classes}-table`}>
               <MovieMiniCard
-                key={el.movieId}
-                index={i + 1}
-                onClick={onClickMovie(el.movieId)}
-                name={el.title}
-                year={el.year}
+                className={'movie-table-header'}
+                name={'Наименование'}
+                year={'Год'}
+                index={'№'}
               />
-            ))}
-            <Pagination
-              onChange={onChange}
-              defaultCurrent={1}
-              total={maxLength}
-            />
-          </MarginGroup>
-          <MarginGroup className={`${classes}-empty-place`}>
-            {/* 1/4 empty field */}
+              {movies.map((el, i) => (
+                <MovieMiniCard
+                  key={el.movieId}
+                  index={i + 1}
+                  onClick={onClickMovie(el.movieId)}
+                  name={el.title}
+                  year={el.year}
+                />
+              ))}
+              <Pagination
+                onChange={onChange}
+                defaultCurrent={1}
+                total={maxLength}
+              />
+            </MarginGroup>
+            <MarginGroup className={`${classes}-empty-place`}>
+              {/* 1/4 empty field */}
+            </MarginGroup>
           </MarginGroup>
         </MarginGroup>
-      </MarginGroup>
+      </>
     );
   }
 );
