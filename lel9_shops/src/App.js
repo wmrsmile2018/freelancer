@@ -12,7 +12,7 @@ import { auth } from './store/user/reducer';
 
 const Content = memo(() => {
   return (
-    <div>
+    <div className='content'>
       <Header />
       <Routes>
         <Route path='/'>
@@ -24,6 +24,14 @@ const Content = memo(() => {
     </div>
   );
 });
+
+const AnimatedBackgrond = () => {
+  return (
+    <div className='scrolling-image-container'>
+      <div className='scrolling-image'></div>
+    </div>
+  );
+};
 
 function App() {
   const navigation = useNavigate();
@@ -43,6 +51,7 @@ function App() {
 
   return (
     <div className='App'>
+      <AnimatedBackgrond />
       <Routes>
         <Route path='/' element={<Authentication />} />
         <Route path='/im/*' element={<Content />} />
